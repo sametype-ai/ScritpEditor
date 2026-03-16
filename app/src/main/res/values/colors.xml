@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary brand colors -->
+    <color name="primary">#4E9AF8</color>
+    <color name="primary_dark">#2979FF</color>
+    <color name="accent">#00E5FF</color>
+    <color name="error">#FF5252</color>
+
+    <!-- Backgrounds -->
+    <color name="bg_dark">#121212</color>
+    <color name="bg_surface">#1E1E1E</color>
+    <color name="bg_elevated">#2C2C2C</color>
+    <color name="timeline_bg">#0D0D0D</color>
+
+    <!-- Text -->
+    <color name="text_primary">#FFFFFFFF</color>
+    <color name="text_secondary">#99FFFFFF</color>
+    <color name="text_disabled">#44FFFFFF</color>
+
+    <!-- Subtitle block colors -->
+    <color name="subtitle_normal">#BB4E9AF8</color>
+    <color name="subtitle_selected">#DD2979FF</color>
+    <color name="subtitle_placed">#8800E5FF</color>
+
+    <!-- Material Design legacy -->
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>

@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark">
+
+    <!-- Toolbar -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/bg_surface"
+            app:title="자막 편집기"
+            app:titleTextColor="@color/text_primary" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Main content -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!-- Video Player Container (16:9 ratio) -->
+            <FrameLayout
+                android:id="@+id/videoContainer"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0"
+                android:background="@android:color/black">
+
+                <!-- ExoPlayer PlayerView -->
+                <androidx.media3.ui.PlayerView
+                    android:id="@+id/playerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp"
+                    app:show_timeout="3000"
+                    app:resize_mode="fit" />
+
+                <!-- Subtitle Overlay -->
+                <TextView
+                    android:id="@+id/tvSubtitleOverlay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="36dp"
+                    android:layout_marginHorizontal="12dp"
+                    android:background="@drawable/subtitle_bg"
+                    android:gravity="center"
+                    android:padding="6dp"
+                    android:textColor="@android:color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+            </FrameLayout>
+
+            <!-- Selected Subtitle Detail Panel -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/groupSubtitleDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/bg_surface"
+                android:padding="12dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/tvDetailText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:textColor="@color/text_primary"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <!-- Start Frame Controls -->
+                <TextView
+                    android:id="@+id/tvDetailStartFrame"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toStartOf="@+id/btnStartFrameMinus"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvDetailText" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnStartFrameMinus"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:padding="0dp"
+                    android:text="-1f"
+                    android:textSize="10sp"
+                    app:layout_constraintEnd_toStartOf="@+id/btnStartFramePlus"
+                    app:layout_constraintTop_toBottomOf="@id/tvDetailText"
+                    app:layout_constraintBottom_toBottomOf="@id/tvDetailStartFrame" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnStartFramePlus"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:padding="0dp"
+                    android:text="+1f"
+                    android:textSize="10sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvDetailText"
+                    app:layout_constraintBottom_toBottomOf="@id/tvDetailStartFrame" />
+
+                <!-- End Frame Controls -->
+                <TextView
+                    android:id="@+id/tvDetailEndFrame"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toStartOf="@+id/btnEndFrameMinus"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvDetailStartFrame" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnEndFrameMinus"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:padding="0dp"
+                    android:text="-1f"
+                    android:textSize="10sp"
+                    app:layout_constraintEnd_toStartOf="@+id/btnEndFramePlus"
+                    app:layout_constraintTop_toBottomOf="@id/tvDetailStartFrame"
+                    app:layout_constraintBottom_toBottomOf="@id/tvDetailEndFrame" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnEndFramePlus"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:padding="0dp"
+                    android:text="+1f"
+                    android:textSize="10sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvDetailStartFrame"
+                    app:layout_constraintBottom_toBottomOf="@id/tvDetailEndFrame" />
+
+                <TextView
+                    android:id="@+id/tvDetailDuration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/accent"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvDetailEndFrame" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Action Buttons Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/bg_surface"
+                android:elevation="4dp"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnAddSubtitle"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="+ 자막"
+                    android:textSize="13sp"
+                    app:icon="@drawable/ic_add" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnDeleteSubtitle"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="삭제"
+                    android:textColor="@color/error"
+                    android:textSize="13sp"
+                    app:icon="@drawable/ic_delete"
+                    app:iconTint="@color/error" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnScript"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="스크립트"
+                    android:textSize="13sp"
+                    app:icon="@drawable/ic_script" />
+
+            </LinearLayout>
+
+            <!-- Timeline -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/bg_dark"
+                android:paddingHorizontal="12dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="4dp"
+                android:text="타임라인 (핀치줌 · 드래그로 조절)"
+                android:textColor="@color/text_secondary"
+                android:textSize="11sp" />
+
+            <com.sametype.scripteditor.ui.TimelineView
+                android:id="@+id/timelineView"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:background="@color/timeline_bg" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

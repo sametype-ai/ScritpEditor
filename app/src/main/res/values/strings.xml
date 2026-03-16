@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ScriptEditor</string>
+    <string name="pick_video">동영상 선택</string>
+    <string name="editor_title">자막 편집기</string>
+    <string name="add_subtitle">자막 추가</string>
+    <string name="delete_subtitle">자막 삭제</string>
+    <string name="script_manager">스크립트 관리</string>
+    <string name="undo">실행 취소</string>
+    <string name="redo">다시 실행</string>
+    <string name="save">저장</string>
+    <string name="cancel">취소</string>
+</resources>
