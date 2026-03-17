@@ -160,14 +160,27 @@ if "$cygwin" || "$msys" ; then
     done
 fi
 
+# Collect all arguments for the java command:
+#   * DEFAULT_JVM_OPTS, JAVA_OPTS, and GRADLE_OPTS environment variables.
+#   * -D...appname settings
+#   * -classpath
+#   * the main class name
+#   * args from the command line
 
-# Add default JVM options here. You can also use JAVA_OPTS and GRADLE_OPTS to pass JVM options to this script.
-# shellcheck disable=SC2086
-exec "$JAVACMD" \
-    $DEFAULT_JVM_OPTS \
-    $JAVA_OPTS \
-    $GRADLE_OPTS \
-    "-Dorg.gradle.appname=$APP_BASE_NAME" \
-    -classpath "$CLASSPATH" \
-    org.gradle.wrapper.GradleWrapperMain \
-    "$@"
+# Stop when "xargs" is not available.
+if ! command -v xargs >/dev/null 2>&1
+then
+    die "xargs is not available"
+fi
+
+# Use "xargs" to parse quoted args.
+eval "set -- $(
+        printf '%s\n' "$DEFAULT_JVM_OPTS $JAVA_OPTS $GRADLE_OPTS" |
+        xargs -n1 |
+        sed ' s~[^-[:alnum:]+,./:=@_]~\\&~g; ' |
+        tr '\n' ' '
+    ) \"-Dorg.gradle.appname=$APP_BASE_NAME\" \
+    -classpath \"$CLASSPATH\" \
+    org.gradle.wrapper.GradleWrapperMain $*"
+
+exec "$JAVACMD" "$@"
