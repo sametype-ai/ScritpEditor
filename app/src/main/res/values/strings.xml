@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Video Player</string>
+    <string name="no_videos">갤러리에 동영상이 없습니다</string>
+    <string name="permission_rationale">동영상을 불러오려면 미디어 접근 권한이 필요합니다</string>
+    <string name="permission_denied">권한이 거부되었습니다. 설정에서 권한을 허용해 주세요.</string>
+    <string name="video_icon_desc">동영상 아이콘</string>
+</resources>
