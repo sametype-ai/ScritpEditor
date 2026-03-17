@@ -181,9 +181,7 @@ class ScriptInputDialog : BottomSheetDialogFragment() {
     private fun getCurrentFrame(): Long {
         val posMs = viewModel.currentPositionMs.value ?: 0L
         val fps = viewModel.project.value?.fps ?: 30f
-        return SubtitleEditorViewModel.run {
-            com.sametype.scripteditor.model.SubtitleItem.msToFrame(posMs, fps)
-        }
+        return com.sametype.scripteditor.model.SubtitleItem.msToFrame(posMs, fps)
     }
 
     override fun onDestroyView() {
